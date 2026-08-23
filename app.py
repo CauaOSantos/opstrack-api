@@ -50,6 +50,18 @@ def list_quests():
         }
     ]
     return jsonify({"quests_ativas": quests, "total": len(quests)})
+ 
+@app.route("/leaderboard")
+def leaderboard():
+    ranking = [
+        {"posicao": 1, "membro": "Ana (Senior Mage)", "pontos_xp": 18450, "bugs_mortos": 89},
+        {"posicao": 2, "membro": "DevMaster_99 (Paladin)", "pontos_xp": 14200, "bugs_mortos": 64},
+        {"posicao": 3, "membro": "Carlos (Junior Rogue)", "pontos_xp": 9800, "bugs_mortos": 31}
+    ]
+    return jsonify({
+        "temporada": "Sprint 2026.3",
+        "ranking": ranking
+    })
 
 if __name__ == "__main__":
     app.run(debug=True)
