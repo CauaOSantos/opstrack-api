@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def status():
-   return {'servico': 'OpsTrackAPI', 'status': 'online'}
+   return {'servico': 'OpsTrackAPI', 'status': 'up'}
 
 from flask import Flask, jsonify
 
