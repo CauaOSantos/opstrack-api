@@ -217,3 +217,30 @@ main
 ```
 
 As alterações devem ser integradas à `main` por meio de Pull Requests, evitando alterações diretas na branch principal.
+
+## Rodando os testes
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements-dev.txt
+pytest -v
+```
+
+## Rodando os testes
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements-dev.txt
+pytest -v
+```
+
+## Cobertura de testes
+
+A equipe definiu como meta mínima **85%** de cobertura.
+
+```bash
+pytest --cov=app --cov-fail-under=85
+```
+
