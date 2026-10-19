@@ -1,0 +1,15 @@
+# .pre-commit-config.yaml
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace      # Remove espaços em branco extras no final das linhas
+      - id: end-of-file-fixer        # Garante que os arquivos terminem com uma linha em branco
+      - id: check-yaml               # Valida a sintaxe de arquivos YAML
+      - id: check-added-large-files  # Impede o commit de arquivos gigantescos
+
+  # Configuração do Flake8
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.4.1
+    hooks:
+      - id: flake8
