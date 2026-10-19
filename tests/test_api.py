@@ -53,3 +53,24 @@ def test_versao_retorna_versao_atual(client):
 
     assert resposta.status_code == 200
     assert resposta.get_json()['versao'] == '1.0.0'
+
+
+def test_tickets_valida_quantidade_e_chaves(client):
+    resposta = client.get('/tickets')
+
+    assert resposta.status_code == 200
+    tickets = resposta.get_json()['tickets']
+    assert len(tickets) == 3
+    for ticket in tickets:
+        assert 'id' in ticket
+        assert 'titulo' in ticket
+        assert 'status' in ticket
+
+
+def test_usuarios_contem_usuario_ana(client):
+    resposta = client.get('/usuarios')
+
+    assert resposta.status_code == 200
+    usuarios = resposta.get_json()['usuarios']
+    nomes = [usuario['nome'] for usuario in usuarios]
+    assert 'Ana' in nomes
