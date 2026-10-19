@@ -46,3 +46,10 @@ def test_rota_inexistente_retorna_404(client):
 
     # Assert
     assert resposta.status_code == 404
+
+
+def test_versao_retorna_versao_atual(client):
+    resposta = client.get('/versao')
+
+    assert resposta.status_code == 200
+    assert resposta.get_json()['versao'] == '1.0.0'
