@@ -14,7 +14,6 @@ def test_raiz_informa_servico_online(client):
 
 def test_status_retorna_ok(client):
     resposta = client.get('/status')
-
     assert resposta.status_code == 200
     assert resposta.get_json()['status'] == 'ok'
 
