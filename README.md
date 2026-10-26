@@ -218,29 +218,70 @@ main
 
 As alterações devem ser integradas à `main` por meio de Pull Requests, evitando alterações diretas na branch principal.
 
-## Rodando os testes
+## 6. Rodando os testes
+
+O projeto utiliza o **Pytest** para executar os testes automatizados e verificar o funcionamento da aplicação.
+
+Para instalar as dependências de desenvolvimento, incluindo as ferramentas necessárias para os testes, execute:
 
 ```bash
-python -m venv venv
-venv\Scripts\activate
 pip install -r requirements-dev.txt
+```
+
+Para executar os testes automatizados e visualizar os resultados detalhados:
+
+```bash
 pytest -v
 ```
 
-## Rodando os testes
+O parâmetro `-v` exibe informações detalhadas sobre cada teste executado, facilitando a identificação de falhas.
 
-```bash
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements-dev.txt
-pytest -v
-```
+## 7. Cobertura de testes
 
-## Cobertura de testes
+A equipe definiu como meta mínima **85%** de cobertura de código para o projeto.
 
-A equipe definiu como meta mínima **85%** de cobertura.
+Para verificar a cobertura e garantir que o limite mínimo seja atingido, execute:
 
 ```bash
 pytest --cov=app --cov-fail-under=85
 ```
 
+Nesse comando:
+
+- `--cov=app`: verifica a cobertura do código da aplicação.
+- `--cov-fail-under=85`: faz a execução falhar caso a cobertura seja inferior a 85%.
+
+Essa verificação ajuda a identificar partes do código que precisam de mais testes e contribui para a qualidade e a confiabilidade da aplicação.
+
+## 8. Integração Contínua (CI)
+
+O projeto utiliza o **GitHub Actions** para automatizar as verificações de qualidade de código e a execução dos testes.
+
+A configuração da esteira de integração contínua está localizada no arquivo:
+
+```text
+.github/workflows/ci.yml
+```
+
+### Funcionamento da esteira
+
+O workflow é executado automaticamente nos seguintes eventos direcionados à branch `main`:
+
+- **Push:** quando alterações são enviadas para a branch `main`.
+- **Pull Request:** quando um Pull Request tem a branch `main` como destino.
+
+### Etapas executadas
+
+A esteira realiza as seguintes verificações:
+
+1. **Flake8:** verifica o estilo do código Python e identifica possíveis erros.
+2. **Pytest:** executa a suíte de testes automatizados para verificar o funcionamento da aplicação.
+3. **Cobertura de testes:** valida se o projeto atingiu o limite mínimo de 85% de cobertura de código.
+
+O comando utilizado para validar a cobertura é:
+
+```bash
+pytest --cov=app --cov-fail-under=85
+```
+
+Se alguma das verificações configuradas falhar, a execução da esteira será sinalizada como falha no GitHub Actions.
