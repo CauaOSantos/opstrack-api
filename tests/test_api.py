@@ -1,4 +1,3 @@
-
 def test_raiz_informa_servico_online(client):
     # Arrange: o client vem da fixture (tests/conftest.py)
     # Act
